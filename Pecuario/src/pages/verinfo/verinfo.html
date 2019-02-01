@@ -1,0 +1,50 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Ver Información</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+
+        <ion-card-header>
+          Registro
+        </ion-card-header>
+      
+        <ion-card-content>
+            <p>Numero del Animal: {{numberAnimal}}</p>
+            <p>Especie: {{especie}}</p>
+            <p>Raza: {{raza}}</p>
+            <p>Color: {{color}}</p>
+            <p>Fecha de Ingreso {{dateIn}}</p>
+           
+        
+        </ion-card-content>
+      
+      </ion-card>
+
+  <button ion-button
+          color="primary" 
+          row
+          (click)='Consultar_compras()'>
+
+      Consultar <br> Compras
+  </button>
+
+  <button ion-button 
+              color="primary" 
+              row
+              (click)='Consultar_nacimientos()'>
+
+      Consultar <br> Nacimientos
+  </button>
+
+
+ 
+ 
+ 
+</ion-content>

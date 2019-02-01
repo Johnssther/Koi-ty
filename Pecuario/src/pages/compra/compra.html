@@ -1,0 +1,124 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Compra</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+
+        <ion-item>
+          <ion-label stacked >Numero Animal</ion-label>
+          <ion-input [(ngModel)]="numberAnimal" type="text" value=""></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label stacked >Especie</ion-label>
+          <ion-input [(ngModel)]="especie" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked >Raza </ion-label>
+          <ion-input [(ngModel)]="raza" type="text" value=""></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label stacked >Color</ion-label>
+          <ion-input [(ngModel)]="color" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked  color="dark">Fecha de ingreso </ion-label>
+          <ion-input [(ngModel)]="dateIn"type="date" value=""></ion-input>
+        </ion-item><br><br>
+
+          <ion-list radio-group>
+              <ion-list-header>
+                Sexo
+              </ion-list-header>
+            
+              <ion-item>
+                <ion-label>Macho</ion-label>
+                <ion-radio checked="macho" value="go"></ion-radio>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label>Hembra</ion-label>
+                <ion-radio value="Hembra"></ion-radio>
+              </ion-item>
+            </ion-list>
+
+        <ion-item>
+          <ion-label stacked  >Peso al nacer</ion-label>
+          <ion-input type="text"  disabled="true" placeholder="Inabilitado para compra"></ion-input>
+        </ion-item>
+            
+        <ion-item>
+          <ion-label stacked>Padre</ion-label>
+          <ion-input type="text"  disabled="true" placeholder="Inabilitado para compra"></ion-input>
+        </ion-item>
+            
+        <ion-item>
+          <ion-label stacked>Madre</ion-label>
+          <ion-input type="text"  disabled="true" placeholder="Inabilitado para compra"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked  color="dark">Fecha destete </ion-label>
+          <ion-input type="date" disabled="true"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Hato</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+              
+        <ion-item>
+          <ion-label stacked>Lote</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+                
+        <ion-item>
+          <ion-label stacked>Marca</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Rfi</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>¿Activo?</ion-label>
+          <ion-toggle slot="end" checked></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Foto</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Observaciones</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+              
+              
+      </ion-list>
+
+      <button ion-button
+              color="primary" 
+              block
+              (click)='register()'>
+
+          Registrar Compra 
+      </button>
+
+
+     
+</ion-content>
