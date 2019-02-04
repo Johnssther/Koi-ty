@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { SQLiteObject } from "@ionic-native/sqlite";
@@ -10,7 +10,7 @@ export class RegistrosProvider {
 
 
 
-  constructor(public http: HttpClient) {
+  constructor(/*public http: HttpClient*/) {
     console.log('Hello RegistrosProvider Provider');
   }
 setDatabase(db: SQLiteObject){

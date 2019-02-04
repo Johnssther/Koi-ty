@@ -2,9 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { SQLite} from '@ionic-native/sqlite/ngx';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { RegistrosProvider } from "../providers/registros/registros";
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +17,11 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, 
+              public statusBar: StatusBar, 
+              public splashScreen: SplashScreen,
+              public sQLite:SQLite,
+              public registrosProvider:RegistrosProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -29,7 +34,23 @@ export class MyApp {
       { title: 'Ajustes', component: ListPage }
     ];
 
+    this.crearBasedeDatos();//realizo la llamada desde el contructor
   }
+  //CREAR LA BASE DE DATOS Y EVALUARLA
+  crearBasedeDatos(){
+    this.sQLite.create({
+      name: 'data.db',
+      location: 'default'
+    }).then(
+      (db)=>{
+        this.registrosProvider.setDatabase(db);
+        return this.registrosProvider.createTables();
+      }
+    ).catch( error => {
+        console.log(error);
+    });
+  }
+
 
   initializeApp() {
     this.platform.ready().then(() => {
