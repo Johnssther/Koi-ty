@@ -21,7 +21,6 @@
             <p>Raza: {{raza}}</p>
             <p>Color: {{color}}</p>
             <p>Fecha de Ingreso {{dateIn}}</p>
-            <p text-center >Ver mas...</p>
            
         
         </ion-card-content>
@@ -47,7 +46,24 @@
   </button>
 
 
- 
+  <!--*ngFor="let dat of data"-->
+<ion-card *ngFor="let numeroAnimalHq of numeroAnimalH"  color="primary">
+    <ion-card-header>
+      Registro 
+    </ion-card-header>
+  
+    <ion-card-content>
+        <p>Numero del Animal: {{numeroAnimalHq}}</p>
+        <p >Especie: {{razaH}}</p>
+        <p>Raza: {{data.raza}}</p>
+        <p>Color: {{data.color}}</p>
+        <p>Fecha de Ingreso: {{data.fechaIngreso}}</p>
+         
+       
+    
+    </ion-card-content>
+  
+  </ion-card>
  
  
 </ion-content>

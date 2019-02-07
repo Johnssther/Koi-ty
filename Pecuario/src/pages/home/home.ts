@@ -16,6 +16,7 @@ export class HomePage {
 
   registerBirth(){
    this.navCtrl.push(NacimientoPage);
+   console.log('Registrar Nacimiento');
   }
 
   registerBuy(){

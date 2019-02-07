@@ -3,6 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+//plugins
+
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
@@ -16,9 +18,12 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, 
+              public statusBar: StatusBar, 
+              public splashScreen: SplashScreen,
+              ) {
     this.initializeApp();
-
+    
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -28,8 +33,30 @@ export class MyApp {
       { title: 'Sincronizar manualmente', component: ListPage },
       { title: 'Ajustes', component: ListPage }
     ];
+    
+    platform.ready().then(()=>{
+      
+      statusBar.styleDefault();
+      splashScreen.hide();
+     //this.crearBasedeDatos();
+    });
 
   }
+  
+  /* crearBasedeDatos(){
+    this.sQLite.create({
+      name:'data.db',
+      location:'default'
+    }).then(
+      (db)=>{
+        this.registrosProvider.setDatabase(db);
+        alert(db);
+        return this.registrosProvider.createTables();
+      }
+    ).catch(error=>{
+      console.log(error);
+    });
+  } */
 
   initializeApp() {
     this.platform.ready().then(() => {

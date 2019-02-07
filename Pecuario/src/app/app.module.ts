@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { SQLite} from '@ionic-native/sqlite/ngx';
 
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -13,7 +12,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { CompraPage, NacimientoPage, VerinfoPage } from "../pages/index.pages";
+
+//Servicios
 import { RegistrosProvider } from "../providers/registros/registros";
+import { HistorialProvider } from '../providers/historial/historial';
+import { BasedatosProvider } from '../providers/basedatos/basedatos';
 
 
 
@@ -44,7 +47,9 @@ import { RegistrosProvider } from "../providers/registros/registros";
     SplashScreen,
     SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RegistrosProvider
+    RegistrosProvider,
+    HistorialProvider,
+    BasedatosProvider
   ]
 })
 export class AppModule {}

@@ -19,7 +19,7 @@
       
         <ion-item>
           <ion-label stacked >Especie</ion-label>
-          <ion-input [(ngModel)]="especie" type="text"></ion-input>
+          <ion-input [(ngModel)]="especie" type="text" value=""></ion-input>
         </ion-item>
 
         <ion-item>
@@ -112,6 +112,7 @@
       </ion-list>
 
       <button ion-button
+              class="btn1"
               color="primary" 
               block
               (click)='register()'>
