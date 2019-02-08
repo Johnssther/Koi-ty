@@ -56,7 +56,7 @@ export class VerinfoPage {
  
   this.basedatosProvider.getHato(0);
    
-   alert('Este nombre fue guardado en la base de datos '+ this.basedatosProvider.getHato(0));
+   console.log('Este nombre fue guardado en la base de datos '+ this.basedatosProvider.getHato(0));
   }
   
   Consultar_nacimientos(){
