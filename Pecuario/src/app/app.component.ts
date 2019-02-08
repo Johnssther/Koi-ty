@@ -34,7 +34,7 @@ export class MyApp {
       { title: 'Ajustes', component: ListPage }
     ];
 
-    this.crearBasedeDatos();//realizo la llamada desde el contructor
+    
   }
   //CREAR LA BASE DE DATOS Y EVALUARLA
   crearBasedeDatos(){
@@ -44,10 +44,12 @@ export class MyApp {
     }).then(
       (db)=>{
         this.registrosProvider.setDatabase(db);
+        console.log('base de datos creada');
         return this.registrosProvider.createTables();
       }
     ).catch( error => {
         console.log(error);
+        console.log('Error, la base de datos no se creo');
     });
   }
 
@@ -58,6 +60,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.crearBasedeDatos();
     });
   }
 
