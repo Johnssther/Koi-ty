@@ -37,7 +37,7 @@ export class HistorialProvider {
 
     
     //return compra;
-    return this.color;
+    return this.especie;
     
   }
 

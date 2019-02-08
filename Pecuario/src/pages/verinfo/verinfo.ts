@@ -22,7 +22,7 @@ export class VerinfoPage {
 
   data ;//recibe el objeto compra de HistorialProvider --> servivio o provider
 
-  numeroAnimalH;//Para iterar el ngFor
+  especieH;//Para iterar el ngFor
   razaH;
 
   hatoname = [];
@@ -45,7 +45,7 @@ export class VerinfoPage {
    
 
     this.data = this.historialProvider.cargar_historial();
-    this.numeroAnimalH = this.data;
+    this.especieH = this.data;
     this.razaH = this.data.raza;
     console.log(this.data);
     console.log(this.data + '  --> john');
