@@ -12,6 +12,11 @@
 
     <ion-list>
 
+      <ion-item>
+        <ion-label stacked >Hato</ion-label>
+        <ion-input [(ngModel)]="hato" type="text" value=""></ion-input>
+      </ion-item>
+
         <ion-item>
           <ion-label stacked >Numero Animal</ion-label>
           <ion-input [(ngModel)]="numberAnimal" type="text" value=""></ion-input>
@@ -115,7 +120,7 @@
               class="btn1"
               color="primary" 
               block
-              (click)='register()'>
+              (click)='register("top")'>
 
           Registrar Compra 
       </button>

@@ -3,10 +3,15 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { RegistrosProvider } from "../providers/registros/registros";
+import { SQLite, SQLiteObject } from "@ionic-native/sqlite/ngx";
+
+
 //plugins
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { VerinfoPage, CompraPage } from "../pages/index.pages";
 
 @Component({
   templateUrl: 'app.html'
@@ -21,42 +26,40 @@ export class MyApp {
   constructor(public platform: Platform, 
               public statusBar: StatusBar, 
               public splashScreen: SplashScreen,
+              public registrosProvider:RegistrosProvider,
+              public sqlite:SQLite
               ) {
     this.initializeApp();
     
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'Consultar la base de datos', component: VerinfoPage },
+      { title: 'Ingresar Información', component: CompraPage },
       { title: 'Estadisticas', component: ListPage },
-      { title: 'Ingresar Información', component: ListPage },
-      { title: 'Consultar la base de datos', component: ListPage },
-      { title: 'Sincronizar manualmente', component: ListPage },
+      { title: 'Sincronizar', component: ListPage },
       { title: 'Ajustes', component: ListPage }
     ];
     
-    platform.ready().then(()=>{
-      
-      statusBar.styleDefault();
-      splashScreen.hide();
-     //this.crearBasedeDatos();
-    });
+  
 
   }
   
-  /* crearBasedeDatos(){
-    this.sQLite.create({
+   crearBasedeDatos(){
+    this.sqlite.create({
       name:'data.db',
       location:'default'
     }).then(
       (db)=>{
         this.registrosProvider.setDatabase(db);
         alert(db);
+        alert('base de datos creada');
         return this.registrosProvider.createTables();
       }
     ).catch(error=>{
       console.log(error);
     });
-  } */
+  } 
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -64,6 +67,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+    //  this.crearBasedeDatos();
     });
   }
 

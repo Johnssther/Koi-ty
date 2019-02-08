@@ -1,4 +1,4 @@
- import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { SQLite, SQLiteObject } from "@ionic-native/sqlite/ngx";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class BasedatosProvider {
 
-  private database:SQLiteObject;
+  private database : SQLiteObject;
   private dbReady = new BehaviorSubject<boolean>(false); 
 
  
@@ -15,20 +15,26 @@ export class BasedatosProvider {
     //CREO LA BASE DE DATOS 
     this.platform.ready().then(()=>{
       this.sqlite.create({
-        name: 'todos.db',
+        name: 'data.db',
         location: 'default'
       })
       .then((db:SQLiteObject)=>{
         this.database = db;
+        console.log(this.database + 'base datos creada');
         
         this.createTables().then(()=>{     
           //al momento de cargar o crear las tablas establecemos el observador en true 'dbReady'
           this.dbReady.next(true);
         });
       })
+      .catch((err)=>{
+          console.log('lo sentimos no podimos procesar tu solicitud',err);
+      });
 
     });
   }
+
+
 
   private createTables (){
     return this.database.executeSql(`
@@ -69,12 +75,15 @@ export class BasedatosProvider {
     return new Promise((resolve, rejet)=>{
       if(this.dbReady.getValue()){
           resolve();
-          alert('Base de datos lista para insertar datos');
+          console.log('Base de datos lista para insertar datos');
       }
       else {
+        console.log('No se pudo crear la base de datos');
         this.dbReady.subscribe((ready)=>{
           if(ready){
             resolve();
+            console.log('LA BASE DE DATOS HA SIDO CREADA');
+           
           }
         })
       }
@@ -82,7 +91,7 @@ export class BasedatosProvider {
   }
 
   //CRUD
-  getHatos(){
+ /*  getHatos(){
     return this.isReady()
     .then(()=>{
       return this.database.executeSql('SELECT * from hato', [])
@@ -94,19 +103,41 @@ export class BasedatosProvider {
         return hatos;
       })
     })
+  } */
+  er:any;
+  getHato(id:number){
+    return this.isReady()
+    .then(()=>{
+      return this.database.executeSql('SELECT * from hato', [])
+      .then((data)=>{
+        let hatos = [];
+        for(let i=0; i<data.rows.length; i++){
+          hatos.push(data.rows.item(i));
+        }
+        return hatos;
+        
+      })
+    })
   }
 
 
+
+//INSERTANDO DATOS A LA TABLA HATOS
   addHato(name:string){ 
     return this.isReady()
     .then(()=>{
-      return this.database.executeSql(`INSERT INTO hato(name)`)
+      console.log('DATOS INSERTADOS A LA TABLA');
+      return this.database.executeSql(`INSERT INTO hato(name) VALUES ('${name}');`).then((result)=>{
+        if(result.insertId){
+          return this. getHato(result.insertId);
+        }
+      })
     })
    }
 
 
 
-  getHato(id:number){ }
+  getHatos(id:number){ }
   deleteHato(id:number){ }
 
 
