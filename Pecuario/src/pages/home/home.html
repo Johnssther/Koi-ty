@@ -1,91 +1,87 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Ingresar Informacion</ion-title>
+    <ion-title>
+      Pecuario
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Crear Registros</h3>
+  
+  <button ion-button block (click)="CreateAnimal();"> Crear Animal</button>
+  <button ion-button block (click)="GetAllAnimal();"> Listar Animales</button>
 
+  <form [formGroup]="todo" (ngSubmit)="CreateAnimal()" novalidate>
 
-  <button ion-button
-          class="btn-1"
-          color="primary" 
-          row
-          (click)='registerBuy()'>
+    <ion-item>
+      <ion-label>Número Animal</ion-label>
+      <ion-input type="number" formControlName="numeroA"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Marca</ion-label>
+      <ion-input type="number" formControlName="marca"></ion-input>
+    </ion-item>
 
-        Registrar <br>Compra 
-</button>
+    <ion-item>
+      <ion-label>Especie</ion-label>
+      <ion-input type="text" formControlName="especie"></ion-input>
+    </ion-item>
 
-  <button ion-button
-          class="btn-2"
-          color="secondary" 
-          row
-          (click)='registerBirth()'>
+    <ion-item>
+        <ion-label>Especie</ion-label>
+        <ion-input type="text" formControlName="especie"></ion-input>
+      </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha Ingreso</ion-label>
+      <ion-input type="date" formControlName="fechaIngreso"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Peso</ion-label>
+      <ion-input type="number" formControlName="peso"></ion-input>
+    </ion-item>
+
+    <ion-list radio-group formControlName="sexo">
+      <ion-list-header> Sexo</ion-list-header>
     
-      Registrar <br> Nacimiento 
-    </button>
+      <ion-item>
+        <ion-label>Macho</ion-label>
+        <ion-radio checked="true" value="M"></ion-radio>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Hembra</ion-label>
+        <ion-radio value="H"></ion-radio>
+      </ion-item>
+
+    </ion-list>
 
 
 
+    <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
+  </form>
 
-
-<button ion-button block color="light">Actualizar</button>
-
-<h6>Ultimos registros ingresados</h6>
-      <ion-card>
-
-        <ion-card-header>
-          Registro
-        </ion-card-header>
-
-        <ion-card-content>
-            <p>Total de Nacimientos en el ultimo mes</p>
-            <p>Especie: {{especie}}</p>
-            <p>Raza: {{raza}}</p>
-            <p>Color: {{color}}</p>
-            <p>Fecha de Ingreso {{dateIn}}</p>
-            <p text-center>Ver mas...</p>
-          
-        </ion-card-content>
-
-      </ion-card>
-      <ion-card>
-
-        <ion-card-header>
-          Registro
-        </ion-card-header>
-
-        <ion-card-content>
-            <p>Total de Nacimientos en el ultimo mes</p>
-            <p>Especie: {{especie}}</p>
-            <p>Raza: {{raza}}</p>
-            <p>Color: {{color}}</p>
-            <p>Fecha de Ingreso {{dateIn}}</p>
-            <p text-center>Ver mas...</p>
-          
-        </ion-card-content>
-
-      </ion-card>
-      <ion-card>
-
-        <ion-card-header>
-          Registro
-        </ion-card-header>
-
-        <ion-card-content>
-            <p>Total de Nacimientos en el ultimo mes</p>
-            <p>Especie: {{especie}}</p>
-            <p>Raza: {{raza}}</p>
-            <p>Color: {{color}}</p>
-            <p>Fecha de Ingreso {{dateIn}}</p>
-            <p text-center>Ver mas...</p>
-          
-        </ion-card-content>
-
-      </ion-card>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of ListAnimal">
+      <ion-item> 
+        <h2>Número Amimal: {{item.numeroA}}</h2>     
+        <h2>Marca: {{item.marca }}</h2>
+        <h2>Especie: {{item.especie}}</h2>
+        <h2>Fecha: {{item.fechaIngreso}}</h2>
+        <h2>Peso: {{item.peso}}</h2>
+        <h2>Sexo: {{item.sexo == 'M' ? 'Macho' : 'Hembra' }}</h2>
+        <h2>Lote: {{item.lote}}</h2>
+      </ion-item>
+ 
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="DeleteUser(item.id)">
+          <ion-icon name="delete"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  
 
 </ion-content>

@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ingresar Informacion</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Crear Registros</h3>
+
+
+  <button ion-button
+          class="btn-1"
+          color="primary" 
+          row
+          (click)='registerBuy()'>
+
+        Registrar <br>Compra 
+</button>
+
+  <button ion-button
+          class="btn-2"
+          color="secondary" 
+          row
+          (click)='registerBirth()'>
+    
+      Registrar <br> Nacimiento 
+    </button>
+
+
+
+
+
+<button ion-button block color="light">Actualizar</button>
+
+<h6>Ultimos registros ingresados</h6>
+      <ion-card>
+
+        <ion-card-header>
+          Registro
+        </ion-card-header>
+
+        <ion-card-content>
+            <p>Total de Nacimientos en el ultimo mes</p>
+            <p>Especie: {{especie}}</p>
+            <p>Raza: {{raza}}</p>
+            <p>Color: {{color}}</p>
+            <p>Fecha de Ingreso {{dateIn}}</p>
+            <p text-center>Ver mas...</p>
+          
+        </ion-card-content>
+
+      </ion-card>
+      <ion-card>
+
+        <ion-card-header>
+          Registro
+        </ion-card-header>
+
+        <ion-card-content>
+            <p>Total de Nacimientos en el ultimo mes</p>
+            <p>Especie: {{especie}}</p>
+            <p>Raza: {{raza}}</p>
+            <p>Color: {{color}}</p>
+            <p>Fecha de Ingreso {{dateIn}}</p>
+            <p text-center>Ver mas...</p>
+          
+        </ion-card-content>
+
+      </ion-card>
+      <ion-card>
+
+        <ion-card-header>
+          Registro
+        </ion-card-header>
+
+        <ion-card-content>
+            <p>Total de Nacimientos en el ultimo mes</p>
+            <p>Especie: {{especie}}</p>
+            <p>Raza: {{raza}}</p>
+            <p>Color: {{color}}</p>
+            <p>Fecha de Ingreso {{dateIn}}</p>
+            <p text-center>Ver mas...</p>
+          
+        </ion-card-content>
+
+      </ion-card>
+
+</ion-content>

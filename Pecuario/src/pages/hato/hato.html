@@ -1,0 +1,61 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Pecuario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <form [formGroup]="todo" (ngSubmit)="CreateHato()" novalidate>
+
+    <ion-item>
+      <ion-label>Nombre Hato</ion-label>
+      <ion-input type="text" formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-input type="text" formControlName="descripcion"></ion-input>
+    </ion-item>
+
+    <ion-list radio-group formControlName="activo">
+        <ion-list-header> Actividad</ion-list-header>
+      
+        <ion-item>
+          <ion-label>Activo</ion-label>
+          <ion-radio checked="true" value="A"></ion-radio>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Inactivo</ion-label>
+          <ion-radio value="I"></ion-radio>
+        </ion-item>
+    
+      </ion-list>
+  
+
+  </form>
+
+
+  <button ion-button block (click)="CreateHato();"> Añadir nuevo Hato</button>
+  <button ion-button block (click)="GetAllHato();"> Listar Hatos registrados</button>
+  <button ion-button block (click)="goPrincipal();"> Regresar</button>
+
+
+  <ion-list *ngFor="let item of ListHato" >
+      <ion-item-sliding >
+        <ion-item>
+          <h2>{{item.id}}</h2>
+          <h2 text-wrap>{{item.nombre}}</h2>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary" (click)="getHato(item.id)">
+            <ion-icon name="eye"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+</ion-content>
