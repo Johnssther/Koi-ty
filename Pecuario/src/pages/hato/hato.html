@@ -21,28 +21,16 @@
       <ion-input type="text" formControlName="descripcion"></ion-input>
     </ion-item>
 
-    <ion-list radio-group formControlName="activo">
-        <ion-list-header> Actividad</ion-list-header>
-      
-        <ion-item>
-          <ion-label>Activo</ion-label>
-          <ion-radio checked="true" value="A"></ion-radio>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label>Inactivo</ion-label>
-          <ion-radio value="I"></ion-radio>
-        </ion-item>
-    
-      </ion-list>
-  
-
+    <ion-item>
+      <ion-label>Activo</ion-label>
+      <ion-toggle checked="false" formControlName="activo"></ion-toggle>
+    </ion-item>
   </form>
 
 
   <button ion-button block (click)="CreateHato();"> Añadir nuevo Hato</button>
   <button ion-button block (click)="GetAllHato();"> Listar Hatos registrados</button>
-  <button ion-button block (click)="goPrincipal();"> Regresar</button>
+
 
 
   <ion-list *ngFor="let item of ListHato" >

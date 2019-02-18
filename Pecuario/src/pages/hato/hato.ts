@@ -27,7 +27,7 @@ export class HatoPage {
     this.todo = this.formBuilder.group({
       nombre: [''],
       descripcion: [''],
-      activo: [''],
+      activo: [false],
     });
   }
   goPrincipal(){
@@ -39,11 +39,8 @@ export class HatoPage {
   }
 
   CreateHato(){
-    console.log(this.todo);
-    
     this.database.CreateHato(this.todo.value.nombre, this.todo.value.descripcion,
-      this.todo.value.activo).then( (data) => {
-      console.log(data);
+      this.todo.value.activo).then((data) => {
      alert("se creo Hato ");
     }, (error) => {
       console.log(error);
@@ -51,8 +48,10 @@ export class HatoPage {
   }
 
   getHato(id:number) {
-    this.database.GetHato(id).then((data: any) => {
-      this.navCtrl.push(VistaPage,{datos: data});
+    this.database.GetHato(id).then((data: object) => {
+      this.navCtrl.push(VistaPage, {
+        data: data
+      });
     }, (error) => {
       console.log(error);
     })
@@ -66,5 +65,6 @@ export class HatoPage {
       console.log(error);
     })
   }
+
 
 }
